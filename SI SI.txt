@@ -1,0 +1,287 @@
+/*==============================================================*/
+/* -----------------Kenlly---------                             */
+/*==============================================================*/
+
+/*==============================================================*/
+/* Table: REGISTRO                                              */
+/*==============================================================*/
+create table REGISTRO (
+   RES_CI               INT4                 not null,
+   RES_NOMBRE           CHAR(30)             null,
+   RES_APELLIDO         CHAR(30)             null,
+   RES_NUMTELEFONICO    INT4                 null,
+   RES_CIUDAD           CHAR(30)             null,
+   RES_EMAIL            CHAR(30)             null,
+   RES_CONTRASENA       CHAR(30)             null,
+   constraint PK_REGISTRO primary key (RES_CI)
+);
+/*==============================================================*/
+--registro--			  
+insert into REGISTRO values(2022060401,'EDWIN DENNIS','RIVADENEIRA SALVATIERRA',0988807986,'Manta','ed2022@gmail.com','Manabi');
+insert into REGISTRO values(2022060402,'JUANA EVANGELISTA','RIVERA MERO',0988807986,'Manta''je2022@gmail.com','Manabi');
+insert into REGISTRO values(2022060403,'ESTHER ELIZABETH','MERO MARIN',0988807986,'Portoviejo''ee2022@gmail.com','Manabi');
+insert into REGISTRO values(2022060404,'MAURICIO ANTONIO','LOPEZ GOMES',0988807986,'Portoviejo''ma2022@gmail.com','Manabi');
+insert into REGISTRO values(2022060405,'ANGEL AVAN','BRAVO LOOR',0988807986,'Manta''aa2022@gmail.com','Manabi');
+insert into REGISTRO values(2022060406,'SHIRLEY GISELA','MERO ZAMORA',0988807986,'Pedernales''sg2022@gmail.com','Manabi');
+insert into REGISTRO values(2022060407,'LUIS SEGUNDO','SEVILLA MORAN',0988807986,'Pedernales''ls2022@gmail.com','Manabi');
+insert into REGISTRO values(2022060408,'Jefferson','Vera',0988807986,'Manta''jv2022@gmail.com','Manabi');
+insert into REGISTRO values(2022060409,'Plua','Alberto',0988807986,'Chone''pl2022@gmail.com','Manabi');
+insert into REGISTRO values(2022060410,'Sara','Centeno',0988807986,'Manta''sc2022@gmail.com','Manabi');
+insert into REGISTRO values(2022060411,'Joselin','Rivas',0988807986,'Carmen''jr2022@gmail.com','Manabi');
+insert into REGISTRO values(2022060412,'Eras','Tomala',0988807986,'Manta''et2022@gmail.com','Manabi');
+
+
+
+/*==============================================================*/
+/* Table: ROL                                                   */
+/*==============================================================*/
+create table ROL (
+   ROL_ID               INT4                 not null,
+   ROL_DESCRIPCION      CHAR(30)             null,
+   constraint PK_ROL primary key (ROL_ID)
+);
+/*==============================================================*/
+--rol--
+insert into ROL values(1,'Vendedor');
+insert into ROL values(2,'Comprar');
+
+
+
+
+/*==============================================================*/
+/* Table: PERFIL                                                */
+/*==============================================================*/
+create table PERFIL (
+   PER_ID               INT4                 not null,
+   ROL_ID               INT4                 not null,
+   PER_DESCRIPCION      CHAR(30)             null,
+   constraint PK_PERFIL primary key (PER_ID)
+);
+/*==============================================================*/
+--perfil--
+insert into PERFIL values(1,1,'LE GUSTA VENDER');
+insert into PERFIL values(2,1,'LE GUSTA VENDER');
+insert into PERFIL values(3,1,'LE GUSTA VENDER');
+insert into PERFIL values(4,1,'LE GUSTA VENDER');
+insert into PERFIL values(5,1,'LE GUSTA VENDER');
+insert into PERFIL values(6,1,'LE GUSTA VENDER');
+insert into PERFIL values(7,2,'LE GUSTA COMPRAR');
+insert into PERFIL values(8,2,'LE GUSTA COMPRAR');
+insert into PERFIL values(9,2,'LE GUSTA COMPRAR');
+insert into PERFIL values(10,2,'LE GUSTA COMPRAR');
+insert into PERFIL values(11,2,'LE GUSTA COMPRAR');
+insert into PERFIL values(12,2,'LE GUSTA COMPRAR');
+
+
+
+
+/*==============================================================*/
+/* Table: LOGIN                                                 */
+/*==============================================================*/
+create table LOGIN (
+   LOG_ID               INT4                 not null,
+   PER_ID               INT4                 not null,
+   RES_CI               INT4                 not null,
+   LOG_CONTRASENA       CHAR(30)             null,
+   constraint PK_LOGIN primary key (LOG_ID)
+);
+/*==============================================================*/
+--login--
+insert into LOGIN values(1,1,2022060401);
+insert into LOGIN values(2,2,2022060402);
+insert into LOGIN values(3,3,2022060403);
+insert into LOGIN values(4,4,2022060404);
+insert into LOGIN values(5,5,2022060405);
+insert into LOGIN values(6,6,2022060406);
+insert into LOGIN values(7,7,2022060407);
+insert into LOGIN values(8,8,2022060408);
+insert into LOGIN values(9,9,2022060409);
+insert into LOGIN values(10,10,2022060410);
+insert into LOGIN values(11,11,2022060411);
+insert into LOGIN values(12,12,2022060412);
+
+
+
+
+/*==============================================================*/
+/* Table: OFERTA_ESTADO                                         */
+/*==============================================================*/
+create table OFERTA_ESTADO (
+   OFER_EST_ID          INT4                 not null,
+   OFER_EST_DESCRIPCION CHAR(30)             null,
+   constraint PK_OFERTA_ESTADO primary key (OFER_EST_ID)
+);
+/*==============================================================*/
+--oferta estado--
+insert into OFERTA_ESTADO values(1,'vendido');
+insert into OFERTA_ESTADO values(2,'vendido');
+insert into OFERTA_ESTADO values(3,'por vender');
+insert into OFERTA_ESTADO values(4,'por vender');
+insert into OFERTA_ESTADO values(5,'oferta replanteada');
+insert into OFERTA_ESTADO values(6,'oferta replanteada');
+
+
+
+/*==============================================================*/
+/* Table: COMPRA_ESTADO                                         */
+/*==============================================================*/
+create table COMPRA_ESTADO (
+   COMP_EST_ID          INT4                 not null,
+   COMP_EST_DESCIPCION  CHAR(30)             null,
+   constraint PK_COMPRA_ESTADO primary key (COMP_EST_ID)
+);
+/*==============================================================*/
+--estado comprar--
+insert into COMPRA_ESTADO values(7,'comprado');
+insert into COMPRA_ESTADO values(8,'comprado');
+insert into COMPRA_ESTADO values(9,'compra caducada');
+insert into COMPRA_ESTADO values(10,'compra caducada');
+insert into COMPRA_ESTADO values(11,'compra enviada');
+insert into COMPRA_ESTADO values(12,'compra enviada');
+
+
+
+
+
+/*==============================================================*/
+/* Table: OFERTA                                                */
+/*==============================================================*/
+create table OFERTA (
+   OFER_ID              INT4                 not null,
+   COMP_EST_ID          INT4                 null,
+   OFER_EST_ID          INT4                 null,
+   PER_ID               INT4                 not null,
+   COMPR_ID             INT4                 null,
+   OFER_VALOR           DECIMAL              null,
+   OFER_FECHA           DATE                 null,
+   OFER_TIPO            CHAR(30)             null,
+   OFER_NOMBRE          CHAR(30)             null,
+   constraint PK_OFERTA primary key (OFER_ID)
+);
+/*==============================================================*/
+--oferta--
+insert into OFERTA values(1,null,1,1,null,300.00,'2022-07-04','mueble','juego de 3');
+insert into OFERTA values(2,null,2,2,null,400.00,'2022-08-05','mueble','juego de 4');
+insert into OFERTA values(3,null,3,3,null,500.00,'2022-09-06','mueble','juego de 5');
+insert into OFERTA values(4,null,4,4,null,600.00,'2022-10-07','consola','xbox one');
+insert into OFERTA values(5,null,5,5,null,700.00,'2022-11-08','consola','xbox x');
+insert into OFERTA values(6,null,6,6,null,800.00,'2022-12-09','consola','xbox');
+/*==============================================================*/
+insert into OFERTA values(7,7,null,7,1,null,null,'cuadro','flor');
+insert into OFERTA values(8,8,null,8,2,null,null,'cuadro','cudrado');
+insert into OFERTA values(9,9,null,9,3,null,null,'cuadro','rectangulo');
+insert into OFERTA values(10,10,null,10,4,null,null,'portatil','hp');
+insert into OFERTA values(11,11,null,11,5,null,null,'portatil','dell');
+insert into OFERTA values(12,12,null,12,6,null,null,'portatil','mac');
+
+
+
+/*==============================================================*/
+/* Table: COMPRA                                                */
+/*==============================================================*/
+create table COMPRA (
+   COMPR_ID             INT4                 not null,
+   OFER_ID              INT4                 null,
+   COMPR_FECHA_INICIO   DATE                 null,
+   COMPR_FECHA_FIN      DATE                 null,
+   COMPR_VALOR_INICAL   DECIMAL              null,
+   COMPR_VALOR_COMPRADO DECIMAL              null,
+   constraint PK_COMPRA primary key (COMPR_ID)
+);
+/*==============================================================*/
+--compra--
+insert into COMPRA values (1,7,'2022-07-15','2022-08-04',400.00,400.00);
+insert into COMPRA values (2,8,'2022-08-16','2022-09-30',500.00,600.00);
+insert into COMPRA values (3,9,'2022-09-17','2022-10-01',600.00,700.00);
+insert into COMPRA values (4,10,'2022-10-18','2022-11-04',700.00,800.00);
+insert into COMPRA values (5,11,'2022-11-19','2022-12-05',800.00,900.00);
+insert into COMPRA values (6,12,'2022-12-20','2022-01-01',900.00,450.00);
+
+
+
+
+
+/*==============================================================*/
+/* Table: ENVIOS                                                */
+/*==============================================================*/
+create table ENVIOS (
+   ENV_ID               INT4                 not null,
+   COMPR_ID             INT4                 null,
+   ENV_CIUDAD           CHAR(30)             null,
+   ENV_FECHA_SALIDA     DATE                 null,
+   ENV_FECHA_LLEGADA    DATE                 null,
+   ENV_COSTO_ENVIO      DECIMAL              null,
+   constraint PK_ENVIOS primary key (ENV_ID)
+);
+/*==============================================================*/
+--envios--
+insert into ENVIOS values (1,1,'Manta','2022-01-10','2022-02-20',40.00);
+insert into ENVIOS values (2,2,'Machala','2022-04-22','2022-05-30',90.00);
+
+
+/*==============================================================*/
+/* Table: RELATIONSHIP_10                                       */
+/*==============================================================*/
+create table RELATIONSHIP_10 (
+   COMPR_ID             INT4                 not null,
+   PER_ID               INT4                 not null,
+   constraint PK_RELATIONSHIP_10 primary key (COMPR_ID, PER_ID)
+);
+
+
+/*==============================================================*/
+alter table COMPRA
+   add constraint FK_COMPRA_RELATIONS_OFERTA foreign key (OFER_ID)
+      references OFERTA (OFER_ID)
+      on delete restrict on update restrict;
+
+alter table ENVIOS
+   add constraint FK_ENVIOS_RELATIONS_COMPRA foreign key (COMPR_ID)
+      references COMPRA (COMPR_ID)
+      on delete restrict on update restrict;
+
+alter table LOGIN
+   add constraint FK_LOGIN_RELATIONS_PERFIL foreign key (PER_ID)
+      references PERFIL (PER_ID)
+      on delete restrict on update restrict;
+
+alter table LOGIN
+   add constraint FK_LOGIN_RELATIONS_REGISTRO foreign key (RES_CI)
+      references REGISTRO (RES_CI)
+      on delete restrict on update restrict;
+
+alter table OFERTA
+   add constraint FK_OFERTA_RELATIONS_COMPRA_E foreign key (COMP_EST_ID)
+      references COMPRA_ESTADO (COMP_EST_ID)
+      on delete restrict on update restrict;
+
+alter table OFERTA
+   add constraint FK_OFERTA_RELATIONS_OFERTA_E foreign key (OFER_EST_ID)
+      references OFERTA_ESTADO (OFER_EST_ID)
+      on delete restrict on update restrict;
+
+alter table OFERTA
+   add constraint FK_OFERTA_RELATIONS_PERFIL foreign key (PER_ID)
+      references PERFIL (PER_ID)
+      on delete restrict on update restrict;
+
+alter table OFERTA
+   add constraint FK_OFERTA_RELATIONS_COMPRA foreign key (COMPR_ID)
+      references COMPRA (COMPR_ID)
+      on delete restrict on update restrict;
+
+alter table PERFIL
+   add constraint FK_PERFIL_RELATIONS_ROL foreign key (ROL_ID)
+      references ROL (ROL_ID)
+      on delete restrict on update restrict;
+
+alter table RELATIONSHIP_10
+   add constraint FK_RELATION_RELATIONS_COMPRA foreign key (COMPR_ID)
+      references COMPRA (COMPR_ID)
+      on delete restrict on update restrict;
+
+alter table RELATIONSHIP_10
+   add constraint FK_RELATION_RELATIONS_PERFIL foreign key (PER_ID)
+      references PERFIL (PER_ID)
+      on delete restrict on update restrict;
+
